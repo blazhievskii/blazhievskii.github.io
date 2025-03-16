@@ -41,7 +41,9 @@ header {
     background: #222;
     padding: 15px;
     border-radius: 8px;
-    width: 800px;
+    /* Два блока в строке при достаточной ширине */
+    flex: 1 1 calc(50% - 20px);
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -54,11 +56,13 @@ header {
     width: 100%;
 }
 
-.project img,
-.project video {
-    width: 48%;
+.project .media-container img,
+.project .media-container video {
+    max-width: 48%;
+    max-height: 400px;
+    height: auto;
+    object-fit: contain;
     border-radius: 8px;
-    loading: lazy;
 }
 
 .project .description {
@@ -89,14 +93,21 @@ a {
 }
 
 a:hover {
-    color: #e68900;
     text-decoration: underline;
 }
 
 #about,
-#skills,
-#contact {
+#skills {
     text-align: left;
+    max-width: 600px;
+    margin: 40px auto;
+    line-height: 1.6;
+
+}
+#contact {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     max-width: 600px;
     margin: 40px auto;
     line-height: 1.6;
@@ -111,4 +122,11 @@ footer {
     margin-top: 20px;
     padding: 10px;
     background: #1e1e1e;
+}
+
+@media (max-width: 768px) {
+    .project,
+    .document {
+        flex: 1 1 100%;
+    }
 }
